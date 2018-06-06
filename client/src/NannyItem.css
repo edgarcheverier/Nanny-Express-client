@@ -1,0 +1,27 @@
+.image {
+  width: 40%
+}
+
+.items {
+  text-align: left;
+}
+
+.languages,
+.references {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+width: 240px;
+height: 20px;
+
+}
+.language,
+.reference {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 150px;
+  align-items: center;
+
+}
