@@ -7,10 +7,10 @@ const Nanny = new Schema({
     Name: String,
     DateBirth: Date,
     Nationality: String,
-    Languages: [{name: String}],
+    Languages: [String],
     Experience: Number,
     BackGround: String,
-    References: [{name: String}],
+    References: [String],
     Photo: Number,
 
   })

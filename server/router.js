@@ -18,10 +18,10 @@ router.post('/nanny', async (ctx) => {
     Name: ctx.request.body.Name,
     DateBirth: ctx.request.body.DateBirth,
     Nationality: ctx.request.body.Nationality,
-    Languages: {name: ctx.request.body.Languages},
+    Languages: ctx.request.body.Languages,
     Experience: ctx.request.body.Experience,
     BackGround: ctx.request.body.BackGround,
-    References: {name: ctx.request.body.References},
+    References: ctx.request.body.References,
     Photo: ctx.request.body.Photo,
 
   });
