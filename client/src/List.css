@@ -1,0 +1,10 @@
+.FilterNanny {
+  display: flex;
+  flex-direction: row;
+}
+
+.Nanny-List {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

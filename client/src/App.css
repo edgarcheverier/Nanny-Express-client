@@ -1,19 +1,11 @@
 .App {
   text-align: center;
-}
-.Nanny-List-Main {
   display:flex;
-  flex-direction: row;
-  margin-left: 100px;
-  margin-right: 100px;
-  /* flex-wrap: wrap; */
+  border-style: solid;
+    border-color: red;
+
+
 }
 
-.FilterNanny {
-  display:flex;
-  flex-direction: row;
-  margin-left: 100px;
-  margin-right: 100px;
-
-
+.Search {
 }

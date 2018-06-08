@@ -32,6 +32,7 @@ class NannyItem extends Component {
             </Moment>
             {' '}old
           </p>
+          <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
           <p className ="nationality">Nationality: {this.props.nanny.Nationality}</p>
           <p className ="languages">Languages: {this.props.nanny.Languages.join(', ')} </p>
           <p className ="experience">Years of experience in childcare: {this.props.nanny.Experience} years</p>
@@ -44,7 +45,6 @@ class NannyItem extends Component {
       <div className ="items">
         <img onClick={(e) => this.handleClick(e)} className="image" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto"/>
         <p className ="name">Name: {this.props.nanny.Name}</p>
-        <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
         <div className="details">
           {condition}
         </div>
