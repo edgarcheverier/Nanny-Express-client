@@ -17,14 +17,23 @@ class List extends Component {
 
     const nannies = this.props.nannies.map((nanny,index) => <NannyItem  key={index} nanny={nanny} > </NannyItem>)
     let filteredNannies= []
+    const { language, reference } = this.props
 
-    if (this.props.language !== 'false' && this.props.reference !== 'false') { filteredNannies.push(this.props.nannies.filter(nanny => nanny.Languages.includes(this.props.language) && nanny.References.includes(this.props.reference)).map((filteredNanny,index) => <FilterItem  key={index} filterNanny={filteredNanny} > </FilterItem>))}
-    else {
-      filteredNannies.push(this.props.nannies.filter(filteredNanny =>{ return filteredNanny.Languages.includes(this.props.language)
-      }).map((filteredNanny,index) => <FilterItem  key={index} filterNanny={filteredNanny} addId = {(id) => {this.handleClick(id)}}> </FilterItem>))
-      filteredNannies.push(this.props.nannies.filter(filteredNanny =>{ return filteredNanny.References.includes(this.props.reference)
-      }).map((filteredNanny,index) => <FilterItem  key={index} filterNanny={filteredNanny} addId = {(id) => {this.handleClick(id)}}> </FilterItem>))
+    if (!(language === false && reference === false)) {
+      filteredNannies.push(
+        this.props.nannies
+          .filter(filteredNanny =>{
+            return language === 'false' || filteredNanny.Languages.includes(language)
+          })
+          .filter(filteredNanny =>{
+            return reference === 'false' || filteredNanny.References.includes(reference)
+          })
+          .map((filteredNanny,index) => (
+            <FilterItem  key={index} filterNanny={filteredNanny} addId = {(id) => {this.handleClick(id)}}> </FilterItem>)
+          )
+      )
     }
+
 
     let condition
     if (filteredNannies.length>0) {

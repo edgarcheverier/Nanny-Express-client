@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import './DetailView.css'
 import Moment from 'react-moment'
 
+import { connect } from 'react-redux'
+
 
 class DetailView extends Component {
 
   render () {
+    if (!this.props.nanny) return null
 
     return (
 
       <div className ="items">
-        <img onClick={(e) => this.handleClick(e)} className="image" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto"/>
+        <img className="image" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto"/>
         <p className ="name">Name: {this.props.nanny.Name}</p>
         <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
         <p className ="age">Age:{' '}
@@ -31,5 +34,8 @@ class DetailView extends Component {
   }
 }
 
+const mapStateToProps = (state, props) => ({
+  nanny: state.find(nanny => nanny._id === props.match.params.id)
+})
 
-export default DetailView
+export default connect(mapStateToProps)(DetailView)

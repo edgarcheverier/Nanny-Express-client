@@ -26,17 +26,14 @@ class NannyItem extends Component {
     if (this.state.sign) {
       condition = (
         <div>
+          <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
           <p className ="age">Age:{' '}
             <Moment fromNow ago>
               {this.props.nanny.DateBirth}
             </Moment>
             {' '}old
           </p>
-          <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
-          <p className ="nationality">Nationality: {this.props.nanny.Nationality}</p>
-          <p className ="languages">Languages: {this.props.nanny.Languages.join(', ')} </p>
-          <p className ="experience">Years of experience in childcare: {this.props.nanny.Experience} years</p>
-          <p className ="background">Professional Background: {this.props.nanny.BackGround}</p>
+
         </div>
       )}
 
