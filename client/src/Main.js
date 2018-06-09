@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import './Main.css'
 import { connect } from 'react-redux'
 import { fetchList } from './actions'
-import Form from './Form'
+import Search from './Search'
 import List from './List'
+import FilteredList from './FilteredList'
 import DetailView from './DetailView'
 
 import { Link, Route } from 'react-router-dom'
@@ -34,40 +35,42 @@ class Main extends Component {
       .then(nannies => this.props.fetchList(nannies))
   }
 
-  detailView = (id) => {
-    // this.setState({
-    //   filteredId: id
-    // })
-  }
-
   renderNannyDetails = () => {
-    // if (this.state.filteredId === undefined) return null
 
-    // const nanny = this.props.nannies.find(nanny => {
-    //   return nanny._id === this.state.filteredId
-    // })
+    return (
+      <div>
+        <Route path="/browse/:reference/:language/:id" component={DetailView}/>
+        {/* <Route path="/browse/:id" component={DetailView}/> */}
+      </div>
+    )
+  }
+  renderFilteredNanny = () => {
 
     return (
       <div>
         <p>USER</p>
-        <Route path="/browse/:id" component={DetailView}/>
+        {/* <Route path="/browse/:reference/:id" component={DetailView}/> */}
+        <Route path="/browse/:reference/:language" component={FilteredList}/>
       </div>
     )
   }
 
   render () {
-
+//console.log(this.props.x);
     return (
 
       <div className="App">
 
         <div className="Search">
           <p>SEARCH?</p>
-          <Form add={(a, b)=>{this.handleClick(a, b)}}></Form>
+          <Search add={(a, b)=>{this.handleClick(a, b)}}></Search>
         </div>
 
         <div className="Nannies">
-          <List nannies={this.props.nannies} language={this.state.language} reference={this.state.reference} addDetail ={(id)=>{this.detailView(id)}}></List>
+          <div className="Details">
+            {this.renderFilteredNanny()}
+          </div>
+          <List ></List>
         </div>
         <div className="Details">
           {this.renderNannyDetails()}
@@ -78,8 +81,9 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  nannies: state
+const mapStateToProps = (state, props) => ({
+  nannies: state,
+  x: props
 })
 
 const mapDispatchToProps = (dispatch) => ({

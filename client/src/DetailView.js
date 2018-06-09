@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 class DetailView extends Component {
 
   render () {
+
     if (!this.props.nanny) return null
 
     return (
@@ -35,7 +36,8 @@ class DetailView extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  nanny: state.find(nanny => nanny._id === props.match.params.id)
+  nanny: state.find(nanny => nanny._id === props.match.params.id),
+
 })
 
 export default connect(mapStateToProps)(DetailView)
