@@ -1,9 +1,8 @@
-.filteredNannies {
-  background-color: green;
-  width:200px
+.filteredNanny {
+  width:150px
 }
 
 
-.image {
-  width: 20%
+.imageFilteredNanny {
+  width: 80%
 }

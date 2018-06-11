@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Search.css'
 import { Redirect} from 'react-router-dom'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 class Search extends Component {
   constructor (props) {
@@ -25,51 +27,55 @@ class Search extends Component {
 
   handleSubmit ( event) {
     event.preventDefault()
-    this.props.add(this.state.value1, this.state.value2)
+  //  this.props.add(this.state.value1, this.state.value2)
     this.setState({ redirect: (
       <Redirect to={`/browse/${this.state.value2}/${this.state.value1}`} > </Redirect>
+
     )})
   }
 
   render () {
 
+    // let optionReference =[]
+    // let x = this.props.nannies.forEach(nanny => nanny.References.filter(reference => optionReference.push(reference)))
+    // console.log(optionReference);
     return (
       <div>
         <div className="Redirect">{this.state.redirect} </div>
         <form className = 'form' onSubmit ={this.handleSubmit}>
-          <div>
-            <label>
-              Reference:
-              <select value={this.state.value2} onChange={this.handleReference}>
-                <option value='false'>Select...</option>
-                <option value="Nikol">Nikol</option>
-                <option value="Suki">Suki</option>
-                <option value="Maria">Maria</option>
-                <option value="Clo">Clo</option>
-                <option value="Stuart">Stuart</option>
-              </select>
-            </label>
+          {/* <FormGroup> */}
+          <label>
+            Reference:
+            <select value={this.state.value2} onChange={this.handleReference}>
+              <option value='false'>Select...</option>
+              <option value="Nikol">Nikol</option>
+              <option value="Suki">Suki</option>
+              <option value="Maria">Maria</option>
+              <option value="Clo">Clo</option>
+              <option value="Stuart">Stuart</option>
+            </select>
+          </label>          
 
+          <input  type= 'submit' value="Search"  />
 
-            <input  type= 'submit' value="Search"  />
+          <label>
+            Ranking:
+            <select value={this.state.value1} onChange={this.handleLanguage}>
+              <option value='false'>Select...</option>
+              <option value="5">5</option>
+              <option value="4">more than 4</option>
+              <option value="3">more than 3 </option>
+            </select>
+          </label>
 
-
-          </div>
-          <div>
-            <label>
-              Language:
-              <select value={this.state.value1} onChange={this.handleLanguage}>
-                <option value='false'>Select...</option>
-                <option value="English">English</option>
-                <option value="Portugues">Portugues</option>
-                <option value="Spanish">Spanish</option>
-              </select>
-            </label>
-          </div>
-
+          {/* </FormGroup> */}
         </form>
       </div>
     )
   }
 }
-export default Search
+const mapStateToProps = (state) => ({
+  nannies: state,
+})
+
+export default connect(mapStateToProps)(Search)

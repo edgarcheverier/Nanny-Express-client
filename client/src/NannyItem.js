@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './NannyItem.css'
 import Moment from 'react-moment'
+import { Image } from 'react-bootstrap'
 
 
 class NannyItem extends Component {
@@ -40,7 +41,7 @@ class NannyItem extends Component {
     return (
 
       <div className ="items">
-        <img onClick={(e) => this.handleClick(e)} className="image" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto"/>
+        <Image onClick={(e) => this.handleClick(e)} className="imageNanny" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="photo" rounded />
         <p className ="name">Name: {this.props.nanny.Name}</p>
         <div className="details">
           {condition}

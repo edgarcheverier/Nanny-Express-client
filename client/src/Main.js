@@ -14,20 +14,20 @@ class Main extends Component {
   constructor (props) {
     super(props)
     this.fetchNannies()
-    this.state = {
-      language: false,
-      reference: false,
-      filteredId: undefined
-    }
+    // this.state = {
+    //   language: false,
+    //   reference: false,
+    //   filteredId: undefined
+    // }
   }
 
-  handleClick = (a, b) => {
-    this.setState({
-      language: a,
-      reference: b,
-      filteredId: undefined
-    })
-  }
+  // handleClick = (a, b) => {
+  //   this.setState({
+  //     language: a,
+  //     reference: b,
+  //     filteredId: undefined
+  //   })
+  // }
 
   fetchNannies = () => {
     fetch('http://localhost:3000/nanny')
@@ -39,8 +39,7 @@ class Main extends Component {
 
     return (
       <div>
-        <Route path="/browse/:reference/:language/:id" component={DetailView}/>
-        {/* <Route path="/browse/:id" component={DetailView}/> */}
+        <Route path="/browse/:reference/:ranking/:id" component={DetailView}/>
       </div>
     )
   }
@@ -49,21 +48,19 @@ class Main extends Component {
     return (
       <div>
         <p>USER</p>
-        {/* <Route path="/browse/:reference/:id" component={DetailView}/> */}
-        <Route path="/browse/:reference/:language" component={FilteredList}/>
+        <Route path="/browse/:reference/:ranking" component={FilteredList}/>
       </div>
     )
   }
 
   render () {
-//console.log(this.props.x);
     return (
 
       <div className="App">
 
         <div className="Search">
           <p>SEARCH?</p>
-          <Search add={(a, b)=>{this.handleClick(a, b)}}></Search>
+          <Search /*add={(a, b)=>{this.handleClick(a, b)}}*/></Search>
         </div>
 
         <div className="Nannies">
@@ -83,7 +80,6 @@ class Main extends Component {
 
 const mapStateToProps = (state, props) => ({
   nannies: state,
-  x: props
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,7 @@
-
-.Nanny-List {
+.FilteredNannies {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border-style: solid;
+    border-color: red;
 }

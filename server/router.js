@@ -22,7 +22,11 @@ router.post('/nanny', async (ctx) => {
       BackGround: ctx.request.body.BackGround,
       References: ctx.request.body.References,
       Photo: ctx.request.body.Photo,
-
+      Ranking: {
+        Punctuality: ctx.request.body.Ranking.Punctuality,
+        Attendance: ctx.request.body.Ranking.Attendance,
+        Affection: ctx.request.body.Ranking.Affection,
+      }
     })
     ctx.body = 'Created!'
     ctx.status = 200
