@@ -13,7 +13,6 @@ class Welcome extends Component {
     this.state = {
       email: '',
       password: '',
-      friends: [],
       redirect: false,
 
     }
@@ -43,37 +42,32 @@ class Welcome extends Component {
       },
       method: 'GET'
     })
-
       .then(response => response.json())
       .then(user => this.props.fetchUser(user.References))
-      .then(this.setState({redirect: true}))
       .then(friends => this.props.add(friends))
-
+      .then( this.setState({ redirect:
+          <Redirect to={'/browse'}> </Redirect>
+      }))
   }
 
+
   render () {
-//  console.log(this.props.user);
-    if ( this.state.redirect) {
-      this.setState({ redirect:
-        <Redirect to={'/browse'}> </Redirect>
-      })
-    }
 
     return (
-      <div className="firstPage">
+      <div className="FirstPage">
         <div className="Redirect">{this.state.redirect} </div>
         <div>
-          {/* <Image  className="welcomePhoto"src={'http://localhost:3000/1.jpg'} alt="photo" rounded /> */}
+          <Image  className="WelcomePhoto"src={'http://localhost:3000/1.jpg'} alt="photo" rounded />
         </div>
-        <div className = 'textFirstPage'>
-          <div className = "welcome">
+        <div className = 'TextFirstPage'>
+          <div className = "Welcome">
             <p >Welcome to Nanny Express!</p>
           </div>
           <div>
-            <form className = 'loginForm' onSubmit={this.handleSubmit}>
+            <form className = 'LoginForm' onSubmit={this.handleSubmit}>
               <FormGroup controlId="email" bsSize="large">
                 <ControlLabel>Email</ControlLabel>
-                <FormControl
+                <FormControl 
                   autoFocus
                   type="email"
                   value={this.state.email}
@@ -89,7 +83,7 @@ class Welcome extends Component {
                 />
               </FormGroup>
 
-              <Button
+              <Button className="LogInButton"
                 block
                 bsSize="large"
                 disabled={!this.validateForm()}

@@ -1,25 +1,35 @@
 
-.firstPage {
+.FirstPage {
   display: flex;
   font-family: Comic Sans MS;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+  height: 1100px;
 }
-.welcome {
+.Welcome {
 font-size: 50px;
-
+margin-bottom: 100px;
 
 }
 
-.button {
-  font-size: 30px;
-  margin-left: 200px
+.LogInButton{
+  background-color: #FFF8DC;
+  color:#A0522D
 }
 
-.textFirstPage{
+.TextFirstPage{
 display: flex;
 flex-direction: column;
 text-align: center;
-  width: 300px
-}
-.welcomePhoto{
+  width: 300px;
+  margin-left: 280px;
+  margin-top:100px;
 
+
+}
+.WelcomePhoto{
+  margin-left: 70px;
+  margin-top:20px;
+width: 90%
 }

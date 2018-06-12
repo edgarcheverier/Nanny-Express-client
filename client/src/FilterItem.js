@@ -8,13 +8,14 @@ class FilterItem extends Component {
   render () {
 
     return (
-      <Link to={`/browse/${this.props.currReference}/${this.props.currRanking}/${this.props.filterNanny._id}`}>
-        <div className ="filteredNanny">
+      <div className ="filteredNanny">
+        <Link to={`/browse/${this.props.currReference}/${this.props.currRanking}/${this.props.filterNanny._id}`}>
+
           <Image className="imageFilteredNanny" src={'http://localhost:3000/' + this.props.filterNanny.Photo +'.jpg'} alt="foto" rounded/>
-          <p className ="name">Name: {this.props.filterNanny.Name}</p>
-          <p className ="references">References: {this.props.filterNanny.References.join(', ')}</p>
-        </div>
-      </Link>
+        </Link>
+        <p className ="name">Name: {this.props.filterNanny.Name}</p>
+      </div>
+
 
     )
   }

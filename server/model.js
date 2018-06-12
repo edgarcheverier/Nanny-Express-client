@@ -20,6 +20,7 @@ const Nanny = new Schema({
 })
 
 const User = new Schema({
+  UserName: String,
   Email: String,
   Password: String,
   Key: String,

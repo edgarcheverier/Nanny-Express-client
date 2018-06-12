@@ -6,31 +6,15 @@ import Search from './Search'
 import List from './List'
 import FilteredList from './FilteredList'
 import DetailView from './DetailView'
-
-import { Link, Route } from 'react-router-dom'
+import { Image } from 'react-bootstrap'
+import { Route } from 'react-router-dom'
 
 
 class Main extends Component {
   constructor (props) {
     super(props)
-    this.fetchNannies(),
-    this.state = {
-      friends: this.props.friends
-    }
-    // this.state = {
-    //   language: false,
-    //   reference: false,
-    //   filteredId: undefined
-    // }
+    this.fetchNannies()
   }
-
-  // handleClick = (a, b) => {
-  //   this.setState({
-  //     language: a,
-  //     reference: b,
-  //     filteredId: undefined
-  //   })
-  // }
 
   fetchNannies = () => {
     fetch('http://localhost:3000/nannies')
@@ -39,20 +23,27 @@ class Main extends Component {
   }
 
   renderNannyDetails = () => {
-
     return (
       <div>
-        <Route path="/browse/:reference/:ranking/:id" component={DetailView}/>
+        <div className="User">
+          <p className="UserName">Hello Cristina!</p>
+          <Image className="PhotoUser" src={'http://localhost:3000/19.jpg'} alt="foto" circle/>
+        </div>
+        <div>
+          <Route path="/browse/:reference/:ranking/:id" component={DetailView}/>
+        </div>
       </div>
     )
   }
-  renderFilteredNanny = () => {
 
+  renderFilteredNanny = () => {
     return (
+
+
       <div>
-        <p>USER</p>
         <Route path="/browse/:reference/:ranking" component={FilteredList}/>
       </div>
+
     )
   }
 
@@ -60,18 +51,20 @@ class Main extends Component {
 
     return (
 
-      <div className="App">
+      <div className="MainPage">
 
         <div className="Search">
-          <p>SEARCH?</p>
-          <Search friends={this.props.friends.user}/*add={(a, b)=>{this.handleClick(a, b)}}*/></Search>
+
+          <Search friends={this.props.friends.user}></Search>
         </div>
 
-        <div className="Nannies">
-          <div className="Details">
+        <div className="NanniesLists">
+          <div className="FilteredList">
             {this.renderFilteredNanny()}
           </div>
-          <List ></List>
+          <div className="CompletList">
+            <List ></List>
+          </div>
         </div>
         <div className="Details">
           {this.renderNannyDetails()}
@@ -84,7 +77,6 @@ class Main extends Component {
 
 const mapStateToProps = (state, props) => ({
   nannies: state.nannies,
-  user: state.userData
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -11,7 +11,7 @@ class List extends Component {
     return (
 
       <div className="Nannies">
-        {/* <h2 className="Title">ALL CONTACTS</h2> */}
+        <h2 className="ListTitle">NANNIES</h2>
         <div className="Nanny-List">{nannies}</div>
       </div>
 

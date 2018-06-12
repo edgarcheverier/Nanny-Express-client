@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Search.css'
 import { Redirect} from 'react-router-dom'
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class Search extends Component {
@@ -28,7 +28,6 @@ class Search extends Component {
 
   handleSubmit ( event) {
     event.preventDefault()
-  //  this.props.add(this.state.value1, this.state.value2)
     this.setState({ redirect: (
       <Redirect to={`/browse/${this.state.value2}/${this.state.value1}`} > </Redirect>
 
@@ -36,11 +35,12 @@ class Search extends Component {
   }
 
   render () {
+
     let condition
     if (this.props.friends) {
       condition = (
-        <select value={this.state.value2} onChange={this.handleReference}>
-          <option value='false'>Select...</option>
+        <select className="Options" value={this.state.value2} onChange={this.handleReference}>
+          <option value='false'>Friends...</option>
           {
             this.props.friends.map((friend, index) => {
               return (<option key={index} value={friend}>{friend}</option>)
@@ -51,26 +51,25 @@ class Search extends Component {
     }
 
     return (
-      <div>
+      <div >
         <div className="Redirect">{this.state.redirect} </div>
-        <form className = 'form' onSubmit ={this.handleSubmit}>
-          {/* <FormGroup> */}
-          <label>
-            Reference:
+        <form className = "Form" onSubmit ={this.handleSubmit}>
+          <label className="FriendSelection" >
+            Select one friend:
             {condition}
           </label>
 
-          <input  type= 'submit' value="Search"  />
-
-          <label>
-            Ranking:
-            <select value={this.state.value1} onChange={this.handleLanguage}>
-              <option value='false'>Select...</option>
-              <option value="5">5</option>
-              <option value="4">more than 4</option>
-              <option value="3">more than 3 </option>
+          <label className="RankingSelection">
+            Friends evaluation:
+            <select className="Options" value={this.state.value1} onChange={this.handleLanguage}>
+              <option value='false'>Grades...</option>
+              <option value="4.5">⭐️ ⭐️ ⭐️ ⭐️ ⭐️</option>
+              <option value="4"> ⭐️ ⭐️ ⭐️ ⭐️</option>
+              <option value="3.5">⭐️ ⭐️ ⭐️</option>
             </select>
           </label>
+
+          <Button className ="ButtonSearch" bsSize='large' type= 'submit' >SEARCH</Button>
 
           {/* </FormGroup> */}
         </form>

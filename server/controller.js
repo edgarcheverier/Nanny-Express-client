@@ -67,6 +67,7 @@ const createUser = async (ctx) => {
   else {
     const hash = await bcrypt.hash(userData.password, 10)
     await model.UserModel.create({
+      UserName: userData.username,
       Email:userData.email,
       Password:hash,
       References: userData.references,

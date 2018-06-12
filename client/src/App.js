@@ -2,22 +2,18 @@ import React, { Component } from 'react'
 import './App.css'
 import Main from './Main'
 import Welcome from './Welcome'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import DetailView from './DetailView'
-import FilteredList from './FilteredList'
-import { connect } from 'react-redux'
+import { Route} from 'react-router-dom'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      friends:[]
+      friends:{}
     }
   }
   UserFriends = (friends) =>{
     this.setState({friends: friends})
   }
-
 
   render () {
     const MainPage = (props) =>{
@@ -30,16 +26,14 @@ class App extends Component {
         <Welcome add={(e)=>{this.UserFriends(e)}}></Welcome>
       )
     }
-    console.log(this.state.friends.user);
+console.log(this.state.friends);
     return (
-      <div>
+      <div className="App">
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/browse" component={MainPage}/>
       </div>
     )
   }
 }
-
-
 
 export default App

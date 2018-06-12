@@ -25,20 +25,22 @@ class DetailView extends Component {
 
       if (this.state.sign) {
         condition = (
-          <table class="table table-bordered">
-            <tr>
-              <th>Affection</th>
-              <td> {this.props.nanny.Ranking.Affection}</td>
-            </tr>
-            <tr>
-              <th>Attendance</th>
-              <td> {this.props.nanny.Ranking.Attendance}</td>
-            </tr>
-            <tr>
-              <th>Punctuality</th>
-              <td> {this.props.nanny.Ranking.Punctuality}</td>
-            </tr>
-          </table>
+          <Table className="Table" bordered  >
+            <tbody>
+              <tr>
+                <th>KID FRIENDLY</th>
+                <td> {this.props.nanny.Ranking.Affection}</td>
+              </tr>
+              <tr>
+                <th>RELIABILITY</th>
+                <td> {this.props.nanny.Ranking.Attendance}</td>
+              </tr>
+              <tr>
+                <th>PUNCTUALITY</th>
+                <td> {this.props.nanny.Ranking.Punctuality}</td>
+              </tr>
+            </tbody>
+          </Table>
         )}
 
       if (!this.props.nanny) return null
@@ -46,26 +48,26 @@ class DetailView extends Component {
       const ranking = ((this.props.nanny.Ranking.Punctuality + this.props.nanny.Ranking.Attendance + this.props.nanny.Ranking.Affection )/3).toFixed(2)
 
       return (
-
-        <div className ="items">
-          <Image className="imageDetail" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto" rounded/>
-          <p className ="name">Name: {this.props.nanny.Name}</p>
-          <Button onClick={()=> this.handleClick()}>Ranking</Button>
-          <p className ="ranking"> {ranking}</p>
-          <div className ="ranking"> {condition}</div>
-          <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
-          <p className ="age">Age:{' '}
-            <Moment fromNow ago>
-              {this.props.nanny.DateBirth}
-            </Moment>
-            {' '}old
-          </p>
-          <p className ="references">References: {this.props.nanny.References.join(', ')}</p>
-          <p className ="nationality">Nationality: {this.props.nanny.Nationality}</p>
-          <p className ="languages">Languages: {this.props.nanny.Languages.join(', ')} </p>
-          <p className ="experience">Years of experience in childcare: {this.props.nanny.Experience} years</p>
-          <p className ="background">Professional Background: {this.props.nanny.BackGround}</p>
-
+        <div className="DetailView">
+          <div className ="NannyDetails">
+            <Image className="ImageDetail" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto" rounded/>
+            <p className ="Name">Name: {this.props.nanny.Name}</p>
+            <div className ="Ranking">
+              <Button className ="ButtonRanking" bsSize='large' onClick={()=> this.handleClick()}>Ranking</Button>
+              <p className="RatingText"> {ranking}</p>
+            </div>
+            <div > {condition}</div>
+            <p className ="Age">Age:{' '}
+              <Moment fromNow ago>
+                {this.props.nanny.DateBirth}
+              </Moment>
+              {' '}old
+            </p>
+            <p className ="Nationality">Nationality: {this.props.nanny.Nationality}</p>
+            <p className ="Languages">Languages: {this.props.nanny.Languages.join(', ')} </p>
+            <p className ="Background">Professional Background: {this.props.nanny.BackGround}</p>
+            <Button className ="ButtonContact" bsSize='large' >Contact!</Button>
+          </div>
         </div>
 
       )

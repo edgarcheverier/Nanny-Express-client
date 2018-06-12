@@ -1,12 +1,60 @@
-.App {
+.MainPage {
   text-align: center;
   display:flex;
   border-style: solid;
-    border-color: red;
-
-
-
+  border-color: #FFF8DC;
+  border-radius: 15px;
+  height: 1200px;
 }
 
 .Search {
+  flex-basis: 18%;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+}
+
+.NanniesLists {
+  flex-basis: 57%;
+}
+
+.CompletList{
+  border-style: solid;
+  border-color: #FFF8DC;
+ border-radius: 15px;
+
+}
+.Details{
+  flex-basis: 25%;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+}
+
+.FilteredList {
+  display: flex;
+  justify-content: space-around;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+}
+
+.PhotoUser {
+width:45%;
+height: 50%
+}
+
+.User{
+  display: flex;
+  align-items: center;
+  margin-top:40px;
+  margin-bottom: 120px;
+  border-color: red;
+  margin-right: 20px;
+  justify-content: space-around;
+}
+
+.UserName{
+    font-size: 25px;
+      font-weight: bold;
 }
