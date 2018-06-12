@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/cristinaguimaraes/Solo-Project#readme",
   "dependencies": {
+    "base64url": "^3.0.0",
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "koa": "^2.5.1",
     "koa-body-parser": "^1.1.2",

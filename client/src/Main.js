@@ -13,7 +13,10 @@ import { Link, Route } from 'react-router-dom'
 class Main extends Component {
   constructor (props) {
     super(props)
-    this.fetchNannies()
+    this.fetchNannies(),
+    this.state = {
+      friends: this.props.friends
+    }
     // this.state = {
     //   language: false,
     //   reference: false,
@@ -30,7 +33,7 @@ class Main extends Component {
   // }
 
   fetchNannies = () => {
-    fetch('http://localhost:3000/nanny')
+    fetch('http://localhost:3000/nannies')
       .then(response => response.json())
       .then(nannies => this.props.fetchList(nannies))
   }
@@ -54,13 +57,14 @@ class Main extends Component {
   }
 
   render () {
+
     return (
 
       <div className="App">
 
         <div className="Search">
           <p>SEARCH?</p>
-          <Search /*add={(a, b)=>{this.handleClick(a, b)}}*/></Search>
+          <Search friends={this.props.friends.user}/*add={(a, b)=>{this.handleClick(a, b)}}*/></Search>
         </div>
 
         <div className="Nannies">
@@ -79,7 +83,8 @@ class Main extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  nannies: state,
+  nannies: state.nannies,
+  user: state.userData
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -20,7 +20,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  nannies: state,
+  nannies: state.nannies,
 
 })
 export default connect(mapStateToProps)(List)

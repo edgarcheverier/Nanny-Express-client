@@ -8,6 +8,7 @@ import FilterItem from './FilterItem'
 class FilteredList extends Component {
 
   render () {
+    console.log(this.props.key);
 
     let filteredNannies= []
 
@@ -46,7 +47,7 @@ class FilteredList extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  nannies: state,
+  nannies: state.nannies,
 
 })
 export default connect(mapStateToProps)(FilteredList)

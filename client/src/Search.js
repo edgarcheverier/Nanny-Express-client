@@ -11,6 +11,7 @@ class Search extends Component {
       value1: 'false',
       value2: 'false',
       redirect: false,
+      key: this.props.key
     }
     this.handleLanguage = this.handleLanguage.bind(this)
     this.handleReference = this.handleReference.bind(this)
@@ -35,10 +36,20 @@ class Search extends Component {
   }
 
   render () {
+    let condition
+    if (this.props.friends) {
+      condition = (
+        <select value={this.state.value2} onChange={this.handleReference}>
+          <option value='false'>Select...</option>
+          {
+            this.props.friends.map((friend, index) => {
+              return (<option key={index} value={friend}>{friend}</option>)
+            })
+          }
+        </select>
+      )
+    }
 
-    // let optionReference =[]
-    // let x = this.props.nannies.forEach(nanny => nanny.References.filter(reference => optionReference.push(reference)))
-    // console.log(optionReference);
     return (
       <div>
         <div className="Redirect">{this.state.redirect} </div>
@@ -46,15 +57,8 @@ class Search extends Component {
           {/* <FormGroup> */}
           <label>
             Reference:
-            <select value={this.state.value2} onChange={this.handleReference}>
-              <option value='false'>Select...</option>
-              <option value="Nikol">Nikol</option>
-              <option value="Suki">Suki</option>
-              <option value="Maria">Maria</option>
-              <option value="Clo">Clo</option>
-              <option value="Stuart">Stuart</option>
-            </select>
-          </label>          
+            {condition}
+          </label>
 
           <input  type= 'submit' value="Search"  />
 
@@ -75,7 +79,8 @@ class Search extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  nannies: state,
+  nannies: state.nannies,
+  user: state.user
 })
 
 export default connect(mapStateToProps)(Search)

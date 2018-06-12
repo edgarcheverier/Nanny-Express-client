@@ -73,7 +73,7 @@ class DetailView extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  nanny: state.find(nanny => nanny._id === props.match.params.id),
+  nanny: state.nannies.find(nanny => nanny._id === props.match.params.id),
 
 })
 

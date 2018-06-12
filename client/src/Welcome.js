@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Welcome.css'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { fetchUser } from './actions'
+import { Redirect } from 'react-router-dom'
 import { Button, Image, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 
@@ -10,7 +12,10 @@ class Welcome extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      friends: [],
+      redirect: false,
+
     }
   }
 
@@ -24,15 +29,41 @@ class Welcome extends Component {
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit =  event => {
     event.preventDefault()
+    this.fetchUser()
+  }
+
+  fetchUser = () => {
+    fetch('http://localhost:3000/signin', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + this.state.email +':'+this.state.password
+      },
+      method: 'GET'
+    })
+
+      .then(response => response.json())
+      .then(user => this.props.fetchUser(user.References))
+      .then(this.setState({redirect: true}))
+      .then(friends => this.props.add(friends))
+
   }
 
   render () {
+//  console.log(this.props.user);
+    if ( this.state.redirect) {
+      this.setState({ redirect:
+        <Redirect to={'/browse'}> </Redirect>
+      })
+    }
+
     return (
       <div className="firstPage">
-        <div classname="welcomePhoto">
-          <Image src={'http://localhost:3000/1.jpg'} alt="photo" rounded />
+        <div className="Redirect">{this.state.redirect} </div>
+        <div>
+          {/* <Image  className="welcomePhoto"src={'http://localhost:3000/1.jpg'} alt="photo" rounded /> */}
         </div>
         <div className = 'textFirstPage'>
           <div className = "welcome">
@@ -57,16 +88,16 @@ class Welcome extends Component {
                   type="password"
                 />
               </FormGroup>
-              <Link to={'/browse'}>
-                <Button
-                  block
-                  bsSize="large"
-                  disabled={!this.validateForm()}
-                  type="submit"
-                >
+
+              <Button
+                block
+                bsSize="large"
+                disabled={!this.validateForm()}
+                type="submit"
+              >
                   Login
-                </Button>
-              </Link>
+              </Button>
+
             </form>
           </div>
         </div>
@@ -75,4 +106,13 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome
+const mapStateToProps = (state, props) => ({
+  user: state.user
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: (user) => dispatch(fetchUser(user)),
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome)
