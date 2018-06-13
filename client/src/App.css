@@ -3,7 +3,10 @@
 .App {
     font-family: Quicksand;
     font-size: 20px;
-    background-color: #D2B48C;
+
     color:#A0522D;
-  
+
+}
+body{
+    background-color: #D2B48C;
 }
