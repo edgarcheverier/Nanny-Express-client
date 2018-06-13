@@ -23,13 +23,15 @@ class FilteredList extends Component {
             <FilterItem  className="FilteredNanny" key={index} currReference={this.props.match.params.reference} currRanking={this.props.match.params.ranking} filterNanny={filteredNanny} > </FilterItem>)
           )
       )
+    } else if (ranking === 'false' && reference === 'false') {
+      filteredNannies.push(this.props.nannies.map((filteredNanny,index) => <FilterItem  className="FilteredNanny" key={index} currReference={this.props.match.params.reference} currRanking={this.props.match.params.ranking} filterNanny={filteredNanny} > </FilterItem>))
     }
 
     let condition
     if (filteredNannies.length>0) {
       condition = (
-        <div>
-          <h2 className="FilterTitle">SEARCH RESULT</h2>
+        <div className="FilteredView">
+          <h2 className="FilterTitle">NANNIES</h2>
           <div className="FilteredNannies">
             {filteredNannies}
           </div>

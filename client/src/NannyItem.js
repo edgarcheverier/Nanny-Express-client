@@ -26,6 +26,7 @@ class NannyItem extends Component {
     if (this.state.sign) {
       condition = (
         <div>
+          <p className ="name">Name: {this.props.nanny.Name}</p>
           <p className ="references">Worked with: {this.props.nanny.References.join(', ')}</p>
         </div>
       )}
@@ -34,7 +35,7 @@ class NannyItem extends Component {
 
       <div className ="Nanny">
         <Image onClick={(e) => this.handleClick(e)} className="imageNanny" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="photo" rounded />
-        <p className ="name">Name: {this.props.nanny.Name}</p>
+    
         <div className="details">
           {condition}
         </div>

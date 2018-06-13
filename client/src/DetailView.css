@@ -1,10 +1,9 @@
 .DetailView {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
-  margin-left:20px;
+  margin: 20px;
+margin-top:50px;
   justify-content: space-around;
-
 
 }
 
@@ -17,7 +16,8 @@
 .ButtonRanking {
   background-color: #FFF8DC;
     color:#A0522D;
-    font-size: 25px;
+    font-size: 20px;
+    height: 40px;
 }
 
 .ButtonContact{

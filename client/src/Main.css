@@ -1,27 +1,33 @@
 .MainPage {
   text-align: center;
   display:flex;
-  border-style: solid;
-  border-color: #FFF8DC;
-  border-radius: 15px;
-  height: 1200px;
+    height: 1000px
 }
 
 .Search {
-  flex-basis: 18%;
+  flex-basis: 15%;
   border-style: solid;
   border-color: #FFF8DC;
   border-radius: 15px;
+  margin:10px
 }
 
 .NanniesLists {
-  flex-basis: 57%;
+  flex-basis: 55%;
+   margin:10px;
+   flex-grow:2;
+   border-style: solid;
+   border-color: #FFF8DC;
+   border-radius: 15px;
 }
 
 .CompletList{
+    display: flex;
   border-style: solid;
   border-color: #FFF8DC;
  border-radius: 15px;
+   justify-content: space-around;
+
 
 }
 .Details{
@@ -29,14 +35,13 @@
   border-style: solid;
   border-color: #FFF8DC;
   border-radius: 15px;
+   margin:10px
 }
 
 .FilteredList {
   display: flex;
   justify-content: space-around;
-  border-style: solid;
-  border-color: #FFF8DC;
-  border-radius: 15px;
+
 }
 
 .PhotoUser {

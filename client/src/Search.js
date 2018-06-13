@@ -69,7 +69,7 @@ class Search extends Component {
             </select>
           </label>
 
-          <Button className ="ButtonSearch" bsSize='large' type= 'submit' >SEARCH</Button>
+          <Button className ="ButtonSearch"  type= 'submit' >SEARCH</Button>
 
           {/* </FormGroup> */}
         </form>

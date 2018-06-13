@@ -53,7 +53,7 @@ class DetailView extends Component {
             <Image className="ImageDetail" src={'http://localhost:3000/' + this.props.nanny.Photo +'.jpg'} alt="foto" rounded/>
             <p className ="Name">Name: {this.props.nanny.Name}</p>
             <div className ="Ranking">
-              <Button className ="ButtonRanking" bsSize='large' onClick={()=> this.handleClick()}>Ranking</Button>
+              <Button className ="ButtonRanking"  onClick={()=> this.handleClick()}>Rating</Button>
               <p className="RatingText"> {ranking}</p>
             </div>
             <div > {condition}</div>
@@ -65,7 +65,7 @@ class DetailView extends Component {
             </p>
             <p className ="Nationality">Nationality: {this.props.nanny.Nationality}</p>
             <p className ="Languages">Languages: {this.props.nanny.Languages.join(', ')} </p>
-            <p className ="Background">Professional Background: {this.props.nanny.BackGround}</p>
+            <p className ="BackGround">Professional Background: {this.props.nanny.BackGround}</p>
             <Button className ="ButtonContact" bsSize='large' >Contact!</Button>
           </div>
         </div>

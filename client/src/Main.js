@@ -24,51 +24,43 @@ class Main extends Component {
 
   renderNannyDetails = () => {
     return (
-      <div>
-        <div className="User">
-          <p className="UserName">Hello Cristina!</p>
-          <Image className="PhotoUser" src={'http://localhost:3000/19.jpg'} alt="foto" circle/>
+      <Route path="/browse/:reference/:ranking/:id" render={(props) => (
+        <div className="Details">
+          <DetailView {...props} />
         </div>
-        <div>
-          <Route path="/browse/:reference/:ranking/:id" component={DetailView}/>
-        </div>
-      </div>
+      )}/>
+
     )
   }
 
   renderFilteredNanny = () => {
+
     return (
-
-
       <div>
-        <Route path="/browse/:reference/:ranking" component={FilteredList}/>
-      </div>
 
+      </div>
     )
   }
 
   render () {
-
     return (
 
       <div className="MainPage">
-
         <div className="Search">
+          <div className="User">
+            <p className="UserName">Hello Cristina!</p>
+            <Image className="PhotoUser" src={'http://localhost:3000/19.jpg'} alt="foto" circle/>
+          </div>
+          <div >
 
-          <Search friends={this.props.friends.user}></Search>
+            <Search friends={this.props.friends.user}></Search>
+          </div>
         </div>
-
         <div className="NanniesLists">
-          <div className="FilteredList">
-            {this.renderFilteredNanny()}
-          </div>
-          <div className="CompletList">
-            <List ></List>
-          </div>
+          <Route exact path="/browse" component={List}/>
+          <Route path="/browse/:reference/:ranking" component={FilteredList}/>
         </div>
-        <div className="Details">
-          {this.renderNannyDetails()}
-        </div>
+        {this.renderNannyDetails()}
 
       </div>
     )
