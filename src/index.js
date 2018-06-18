@@ -1,16 +1,18 @@
-
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
 import './index.css'
 import App from './components/App'
-import { BrowserRouter as Router} from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 import reducers from './store/reducers'
+import apiService from './store/middlewares/apiService'
+import { SERVER_URL } from './config/api.config'
 
-
-let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__())
+let store = createStore(
+  reducers,
+  applyMiddleware(apiService(SERVER_URL))
+)
 
 ReactDOM.render(
   <Provider store={store}>
