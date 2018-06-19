@@ -33,6 +33,7 @@ class WelcomeView extends Component {
   logInOrRedirect = () => {
     if (this.props.user.name) {
       this.props.fetchUser();
+
       return <Redirect to='/dashboard' />
     } else {
       return <FacebookLoginButton onLogin={this.onFacebookLogin} />
@@ -57,6 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
     type: 'STORE_USER',
     data: resultObject
   }),
+
   fetchUser: () => dispatch({
     type: 'FETCH_USER',
     [API]: {
@@ -64,6 +66,11 @@ const mapDispatchToProps = (dispatch) => ({
       method: 'POST'
     }
   }),
+
+  nanniesToRender: () => dispatch({
+    type: 'RENDER_ALL',
+    
+  })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomeView);

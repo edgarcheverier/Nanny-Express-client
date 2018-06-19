@@ -8,6 +8,8 @@ import App from './components/App'
 import reducers from './store/reducers'
 import apiService from './store/middlewares/apiService'
 import { SERVER_URL } from './config/api.config'
+import 'onsenui/css/onsenui.css';
+import 'onsenui/css/onsen-css-components.css';
 
 let store = createStore(
   reducers,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import WelcomeView from './WelcomeView';
 import DashboardView from './DashboardView';
 import NavBar from './NavBar';
