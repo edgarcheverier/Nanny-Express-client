@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Toolbar, ToolbarButton, Icon, Splitter, SplitterSide, SplitterContent,
   Page, List, ListItem, Button } from 'react-onsenui';
 import { connect } from 'react-redux';
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components.css';
-
-const mockNames = ['Lindon Sable','Deodatus Jaynie','Phoibe Thersa','Mahthildis Iara'];
 
 class SideMenu extends Component {
  constructor (props) {
@@ -37,11 +33,12 @@ class SideMenu extends Component {
   }
 
   handleClickYourNannies = () => {
+// TODO: LINK TO YOUR NANNIES
     this.hide();
   }
 
   filterNanny = (friend) => {
-    this.props.filterNanny(friend);
+    this.props.filterNanny(friend.fbId);
     this.hide();
   }
 
@@ -72,9 +69,11 @@ class SideMenu extends Component {
             ><i className="zmdi zmdi-edit"></i> Your nannies</Button>
             <ListItem onClick={() => this.showAllNannies()} tappable>Show all nannies</ListItem>
             <List
-              dataSource={this.props.friends || mockNames}
+              dataSource={this.props.user.friends}
               renderRow={(friend) => (
-                <ListItem key={friend} FBID={friend.FBID} onClick={() => this.filterNanny(friend.FBID)} tappable>{friend}</ListItem>
+                <ListItem key={friend.FBID} onClick={() => this.filterNanny(friend)} tappable>
+                  <img src={friend.photo}></img>{friend.name}
+                </ListItem>
               )}/>
           </Page>
         </SplitterSide>
@@ -91,16 +90,16 @@ class SideMenu extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  friends: state.friends
+  friendFilter: state.friendFilter
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  filterNanny: (friend) => dispatch({
-    type: 'FILTER_NANNY',
-    data: friend
+  filterNanny: (friendFBid) => dispatch({
+    type: 'FILTER_FRIENDS',
+    data: friendFBid
   }),
   showAllNannies: () => dispatch({
-    type: 'SHOW_ALL_NANNIES'
+    type: 'UNFILTER_FRIENDS'
   })
 })
 
