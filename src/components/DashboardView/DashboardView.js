@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './DashboardView.css';
 import { connect } from 'react-redux';
-import { Page, Toolbar, Button, List, ListItem, ListHeader } from 'react-onsenui';
+import { Page, List, ListItem, ListHeader } from 'react-onsenui';
 const nannies = [
   {name: 'Ben Kemp', photo: 'https://scontent.fbcn1-1.fna.fbcdn.net/v/t1.0-1/c0.0.320.320/p320x320/14572798_10154209134387800_8782630702405078484_n.jpg?_nc_cat=0&oh=fb8c015d04ef6b321d42e4a67fe01d30&oe=5BB3FEE5'},
   {name: 'Lars Hack', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous.svg/2000px-Anonymous.svg.png'},
@@ -15,7 +15,9 @@ class DashboardView extends Component {
   }
 
   renderRows = () => {
-      return nannies.map((nanny) => { //replace with this.props.nannies
+    if (!this.props.user.nannies) return null;
+    console.log('iinside renderRows: ', this.props.user)
+      return this.props.user.nannies.map((nanny) => {
         return <ListItem>
           <div className='left'>
             <img src={nanny.photo} className='list-item__thumbnail' />
@@ -39,15 +41,17 @@ class DashboardView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.auth
-  //TODO: nannies: state.nanniesToDisplay
+  auth: state.auth,
+  user: state.user,
+  filter: state.friendFilter,
+  selectedNanny: state.selectNanny,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  // TODO: selectNanny: (nanny) => dispatch({
-  //   type: 'SELECT_NANNY',
-  //   data: nanny
-  // })
+  selectNanny: (nanny) => dispatch({
+    type: 'SELECT_NANNY',
+    data: nanny
+  })
 })
 
-export default connect(mapStateToProps)(DashboardView);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardView);
