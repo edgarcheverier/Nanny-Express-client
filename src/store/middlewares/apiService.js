@@ -14,6 +14,7 @@ export default baseURL => store => next => action => {
     })
     .then(res => res.json())
     .then(data => {
+      console.log('mango:', data);  
       const newAction = ({
         ...action,
         type: action.type + '_SUCCESS',
