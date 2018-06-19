@@ -1,8 +1,9 @@
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { Page, Toolbar, Icon, ToolbarButton, ListItem, List, ListHeader, Fab } from 'react-onsenui';
+import { Page, Toolbar, Icon, ToolbarButton, ListItem, List, ListHeader, Fab, ProgressCircular } from 'react-onsenui';
 import ons from 'onsenui';
 
 class NannyEditView extends Component {
@@ -21,23 +22,19 @@ class NannyEditView extends Component {
       </Toolbar>
     );
   }
-  renderRow(row, index){
-    const x = 40 + Math.round(5 * (Math.random() - 0.5)),
-          y = 40 + Math.round(5 * (Math.random() - 0.5));
 
-    const names = ['Max', 'Chloe', 'Bella', 'Oliver', 'Tiger', 'Lucy', 'Shadow', 'Angel'];
-    const name = names[Math.floor(names.length * Math.random())];
-
-    return (
-      <ListItem key={index}>
-        <div className='left'>
-          <img src={`http://placekitten.com/g/${x}/${y}`} className='list-item__thumbnail' />
-        </div>
-        <div className='center'>
-          {name}
-        </div>
-      </ListItem>
-    );
+  renderRows = () => {
+    if (!this.props.user.nannies) return null;
+      return this.props.user.nannies.map((nanny) => {
+        return <ListItem>
+          <div className='left'>
+            <img src={nanny.photo} className='list-item__thumbnail' />
+          </div>
+          <div className='center'>
+            {nanny.name}
+          </div>
+        </ListItem>
+      })
   }
 
   addNewNanni = () => {
@@ -57,16 +54,33 @@ class NannyEditView extends Component {
 
   render() {
     if(this.state.redirec) return <Redirect to='/nannyfrom' />
-    return (
-    <Page renderToolbar={this.renderToolbar} renderFixed={this.renderFixed}>
-      <List
-        dataSource={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-        renderRow={this.renderRow}
-        renderHeader={() => <ListHeader>Nannies</ListHeader>}
-      />
-    </Page>
-    )
+    if(this.props.user) {
+      return (
+        <Page renderToolbar={this.renderToolbar} renderFixed={this.renderFixed}>
+          <List renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
+            {this.renderRows()}
+          </List>
+        </Page>
+      )
+    } else {
+        return (
+          <div>
+            <ProgressCircular indeterminate />
+          </div> 
+        )    
+    }
   }
 }
 
-export default NannyEditView;
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  selectNanny: (nanny) => dispatch({
+    type: 'SELECT_NANNY',
+    data: nanny
+  })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NannyEditView);
