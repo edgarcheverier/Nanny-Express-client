@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import FBConfig from '../../config/facebook.config';
 import { API } from '../../store/middlewares/apiService'
+import { Page, Card } from 'react-onsenui';
 class WelcomeView extends Component {
 
   componentDidMount () {
@@ -42,9 +43,11 @@ class WelcomeView extends Component {
 
 render() {
   return (
-    <div className='WelcomeView'>
+    <Page className='WelcomeView'>
+      <div className='WelcomeViewTitle'>Nanny Express</div>
+      {/* <img className='WelcomeViewPicture' src={require('../../assets/christinapicture.jpg')}></img> */}
       {this.logInOrRedirect()}
-    </div>
+    </Page>
   )
 }
 }

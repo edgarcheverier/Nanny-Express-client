@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './FacebookLoginButton.css';
 
 export default class FacebookLogin extends Component {
 
@@ -63,8 +64,8 @@ export default class FacebookLogin extends Component {
   render() {
     let {children} = this.props;
     return (
-      <button onClick={this.facebookLogin}>
-        Log in with Facebook
+      <button className='facebookLoginButton' onClick={this.facebookLogin}>
+        Continue with Facebook
         {children}
       </button>
     );
