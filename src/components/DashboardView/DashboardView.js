@@ -19,6 +19,7 @@ class DashboardView extends Component {
       if (this.props.filter && this.props.filter !== friend.fbId) {
         //Do nothing
       } else {
+        console.log(this.props.user);
         friend.nannies.forEach(nanny => {
           nannyArray.push(
           <ListItem key={nanny.name}>
