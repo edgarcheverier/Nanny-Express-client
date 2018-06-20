@@ -2,19 +2,21 @@ export const API = Symbol('API');
 
 export default baseURL => store => next => action => {
   if (action[API]) {
-    console.log('sended');
-    // const body = JSON.stringify({name:'banano'})
-    console.log(store.getState().auth);
-    fetch(`${baseURL}${action[API].url}`, {
+    const options = {      
       headers: {
         'Content-Type': 'Application/JSON'
       },
       method: action[API].method || 'GET',
-      body: JSON.stringify(store.getState().auth)
-    })
+    }
+    if (options.method == 'POST') {
+      options.body = JSON.stringify(store.getState().auth)
+    } else if (options.method == 'PUT') {
+      options.body = JSON.stringify(store.getState().user)
+    }
+
+    fetch(`${baseURL}${action[API].url}`, options)
     .then(res => res.json())
     .then(data => {
-      console.log('mango:', data);  
       const newAction = ({
         ...action,
         type: action.type + '_SUCCESS',
