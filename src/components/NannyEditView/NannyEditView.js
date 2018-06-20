@@ -12,6 +12,7 @@ class NannyEditView extends Component {
     redirectToNannyform: false,
     redirectToDashboard: false
   }
+  
   renderToolbar = () =>  {
     return (
       <Toolbar>
@@ -33,12 +34,15 @@ class NannyEditView extends Component {
   renderRows = () => {
     if (!this.props.user.nannies) return null;
       return this.props.user.nannies.map((nanny, index) => {
-        return <ListItem key={nanny.photo} onClick={() => this.editYourNanny(index)}>
+        return <ListItem key={nanny.photo}>
           <div className='left'>
             <img src={nanny.photo} className='list-item__thumbnail' />
           </div>
           <div className='center'>
             {nanny.name}
+          </div>
+          <div className='right'>
+            <Icon icon='md-delete' onClick={() => this.editYourNanny(index)}/>
           </div>
         </ListItem>
       })
