@@ -3,13 +3,19 @@ import './DashboardView.css';
 import { connect } from 'react-redux';
 import { Page, List, ListItem, ListHeader } from 'react-onsenui';
 import SideMenu from '../SideMenu';
-
+import { Redirect } from 'react-router';
 
 class DashboardView extends Component {
-  renderToolbar = () => {
-    return (
-      <SideMenu/>
-    );
+  state = {
+    redirectToNannyView: false,
+    redirectToNannyViewState: null
+  }
+
+  handleOnClickNanny = (nanny) => {
+    this.setState({
+      redirectToNannyViewState: nanny,
+      redirectToNannyView: true
+    })
   }
 
   renderRows = () => {
@@ -21,7 +27,7 @@ class DashboardView extends Component {
       } else {
         friend.nannies.forEach(nanny => {
           nannyArray.push(
-          <ListItem key={nanny.name}>
+          <ListItem key={nanny.name} onClick={() => this.handleOnClickNanny(nanny)}>
             <div className='left'>
               <img src={nanny.photo} className='list-item__thumbnail' />
             </div>
@@ -31,15 +37,16 @@ class DashboardView extends Component {
           </ListItem>
           );
         })
-      }    
+      }
     })
     return nannyArray;
   }
 
   render() {
+   if (this.state.redirectToNannyView) return <Redirect to={{pathname:'/nannyview', state:{nanny:this.state.redirectToNannyViewState}}} />
     return (
-      <Page className='DashboardView' renderToolbar={this.renderToolbar}>
-        <List style={{marginTop: '44px'}}renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
+      <Page className='DashboardView'>
+        <List style={{marginTop: '44px'}}renderHeader={() => <ListHeader>All Nannies</ListHeader>}>
           {this.renderRows()}
         </List>
       </Page>
