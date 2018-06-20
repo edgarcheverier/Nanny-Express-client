@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './DashboardView.css';
 import { connect } from 'react-redux';
 import { Page, List, ListItem, ListHeader } from 'react-onsenui';
-const filter = null;
+
 
 class DashboardView extends Component {
   renderToolbar = () => {
@@ -35,7 +35,7 @@ class DashboardView extends Component {
     return nannyArray;
   }
 
-  render() {  
+  render() {
     return (
       <Page className='DashboardView' renderToolbar={this.renderToolbar}>
         <List renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 

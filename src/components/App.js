@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import WelcomeView from './WelcomeView';
 import DashboardView from './DashboardView';
 import NavBar from './NavBar';
+import NannyEditView from './NannyEditView';
+import NannyFormView from './NannyFormView';
 
 export default class App extends Component {
   render () {
@@ -12,6 +14,8 @@ export default class App extends Component {
         <Switch>
           <Route exact path='/' component={WelcomeView}/>
           <Route path='/dashboard' component={DashboardView}/>
+          <Route path="/nannyedit" component={NannyEditView} />
+          <Route path='/nannyform' component={NannyFormView} />
         </Switch>
       </div>
     )
