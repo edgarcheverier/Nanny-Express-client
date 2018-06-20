@@ -8,9 +8,7 @@ const nannies = [
   {name: 'Lars Hack', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Anonymous.svg/2000px-Anonymous.svg.png'},
 ];
 class DashboardView extends Component {
-  state = {
-    redirec: false
-  }
+
   renderToolbar = () => {
     return (
       <div></div>
@@ -32,21 +30,13 @@ class DashboardView extends Component {
       })
   }
 
-  goToNannyEdit = () => {
-    this.setState({redirec: true})
-  }
   render() {
-    if(this.state.redirec) return <Redirect to='/nannyedit' />
     return (
-
       <Page className='DashboardView' renderToolbar={this.renderToolbar}>
         <List renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
           {this.renderRows()}
         </List>
-      <Button onClick={this.goToNannyEdit}>Click me </Button>
       </Page>
-
-
     )
   }
 }

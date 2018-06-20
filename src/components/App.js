@@ -15,7 +15,7 @@ export default class App extends Component {
           <Route exact path='/' component={WelcomeView}/>
           <Route path='/dashboard' component={DashboardView}/>
           <Route path="/nannyedit" component={NannyEditView} />
-          <Route path='/nannyfrom' component={NannyFormView} />
+          <Route path='/nannyform' component={NannyFormView} />
         </Switch>
       </div>
     )
