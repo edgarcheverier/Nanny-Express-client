@@ -1,0 +1,52 @@
+.DetailView {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+margin-top:50px;
+  justify-content: space-around;
+
+}
+
+
+.ImageDetail {
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.ButtonRanking {
+  background-color: #FFF8DC;
+    color:#A0522D;
+    font-size: 20px;
+    height: 40px;
+}
+
+.ButtonContact{
+  margin-top: 20px;
+  background-color: #A0522D;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.Ranking {
+  display:flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.Name {
+  margin-bottom: 30px;
+  font-size: 25px;
+    font-weight: bold;
+}
+
+.RatingText{
+  margin-bottom: 30px;
+  font-size: 30px;
+    font-weight: bold;
+}
+.Table{
+  background-color: #FFF8DC;
+}
+.Age, .Languages, .Nationality, .BackGround {
+  margin-bottom: 20px;
+}

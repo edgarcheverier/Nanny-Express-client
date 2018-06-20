@@ -1,0 +1,65 @@
+.MainPage {
+  text-align: center;
+  display:flex;
+  
+}
+
+.Search {
+  flex-basis: 15%;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+  margin:10px
+}
+
+.NanniesLists {
+  flex-basis: 55%;
+   margin:10px;
+   flex-grow:2;
+   border-style: solid;
+   border-color: #FFF8DC;
+   border-radius: 15px;
+}
+
+.CompletList{
+    display: flex;
+  border-style: solid;
+  border-color: #FFF8DC;
+ border-radius: 15px;
+   justify-content: space-around;
+
+
+}
+.Details{
+  flex-basis: 25%;
+  border-style: solid;
+  border-color: #FFF8DC;
+  border-radius: 15px;
+   margin:10px
+}
+
+.FilteredList {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.PhotoUser {
+width:45%;
+height: 50%
+}
+
+.User{
+  display: flex;
+  align-items: center;
+  margin-top:40px;
+  margin-bottom: 120px;
+  border-color: red;
+  margin-right: 20px;
+  justify-content: space-around;
+}
+
+.UserName{
+    font-size: 25px;
+      font-weight: bold;
+}

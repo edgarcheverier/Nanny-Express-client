@@ -1,0 +1,33 @@
+{
+  "name": "Solo-Project",
+  "version": "1.0.0",
+  "description": "Nanny Express, a trustworthy channel that connects parents and babysitters.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristinaguimaraes/Solo-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristinaguimaraes/Solo-Project/issues"
+  },
+  "homepage": "https://github.com/cristinaguimaraes/Solo-Project#readme",
+  "dependencies": {
+    "base64url": "^3.0.0",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "koa": "^2.5.1",
+    "koa-body-parser": "^1.1.2",
+    "koa-cors": "0.0.16",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.3",
+    "mongoose": "^5.1.4",
+    "nodemon": "^1.17.5"
+  }
+}
