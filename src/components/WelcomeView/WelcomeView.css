@@ -1,0 +1,31 @@
+.WelcomeView {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.WelcomeViewTitle {
+  font-size: 40px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  z-index: 10;
+  position: absolute;
+  color: white;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.685);
+}
+
+/* .WelcomeViewPicture {
+  height: 100vh;
+  width: 100vw;
+  max-width: 400px;
+  position: relative;
+  z-index: 0;
+  margin: 0 auto; 
+} */
+
+.WelcomeView .page__background {
+  background: url('../../assets/christinapicture.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
