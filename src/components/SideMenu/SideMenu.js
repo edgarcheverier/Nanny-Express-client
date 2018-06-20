@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Toolbar, ToolbarButton, Icon, Splitter, SplitterSide, SplitterContent,
   Page, List, ListItem, Button } from 'react-onsenui';
 import { connect } from 'react-redux';
-
+import { Redirect } from 'react-router';
 class SideMenu extends Component {
  constructor (props) {
    super(props);
    this.state = {
-     isOpen: false
+    isOpen: false,
+    redirectToEditNannies: false,
    }
  }
 
@@ -34,7 +35,8 @@ class SideMenu extends Component {
 
   handleClickYourNannies = () => {
 // TODO: LINK TO YOUR NANNIES
-    this.hide();
+    this.setState({redirectToEditNannies: true});
+    //this.hide();
   }
 
   filterNanny = (friend) => {
@@ -48,6 +50,7 @@ class SideMenu extends Component {
   }
 
   render() {
+    if (this.state.redirectToEditNannies) return <Redirect to='/nannyedit'/>
     return (
       <Splitter>
         <SplitterSide
@@ -78,10 +81,11 @@ class SideMenu extends Component {
           </Page>
         </SplitterSide>
         <SplitterContent>
-          <Page renderToolbar={this.renderToolbar}>
+          {this.renderToolbar()}
+          {/* <Page renderToolbar={this.renderToolbar}>
             <section style={{margin: '16px'}}>
             </section>
-          </Page>
+          </Page> */}
         </SplitterContent>
       </Splitter>
     );

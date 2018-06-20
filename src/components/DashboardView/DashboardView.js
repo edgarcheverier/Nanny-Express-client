@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './DashboardView.css';
 import { connect } from 'react-redux';
 import { Page, List, ListItem, ListHeader } from 'react-onsenui';
+import SideMenu from '../SideMenu';
 
 
 class DashboardView extends Component {
   renderToolbar = () => {
     return (
-      <div></div>
+      <SideMenu/>
     );
   }
 
@@ -15,7 +16,7 @@ class DashboardView extends Component {
     if (!this.props.user.friends) return null;
     let nannyArray = [];
     this.props.user.friends.forEach(friend => {
-      if (filter && filter !== friend.fbId) {
+      if (this.props.filter && this.props.filter !== friend.fbId) {
         //Do nothing
       } else {
         friend.nannies.forEach(nanny => {
@@ -38,7 +39,7 @@ class DashboardView extends Component {
   render() {
     return (
       <Page className='DashboardView' renderToolbar={this.renderToolbar}>
-        <List renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
+        <List style={{marginTop: '44px'}}renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
           {this.renderRows()}
         </List>
       </Page>
