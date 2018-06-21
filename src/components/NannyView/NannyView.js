@@ -32,7 +32,7 @@ class NannyView extends Component {
       return el[0] === 'name' || el[0] === 'age' ||
       el[0] === 'photo' || el[0] === 'description'
       ? null
-      : (<h4>{el[0]}: {el.slice(1).join(`, `)}</h4>)
+      : (<h5 >{el[0]}: {el.slice(1).join(`, `)}</h5>)
     })
   }
 
@@ -41,10 +41,10 @@ class NannyView extends Component {
     return (
       <Page renderToolbar={this.renderToolbar}>
         <div className='NannyView'>
-          <img src={this.props.location.state.nanny.photo}></img>
+          <img className="nannyPhoto" src={this.props.location.state.nanny.photo}></img>
           <h2>{this.props.location.state.nanny.name}, {this.props.location.state.nanny.age}</h2>
           {this.renderNannyProperties()}
-          <p>{this.props.location.state.nanny.description}</p>
+          <p class="nannyDescription">{this.props.location.state.nanny.description}</p>
         </div>
       </Page>
 
