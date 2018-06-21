@@ -1,0 +1,25 @@
+@import '../../styles/colors.css';
+
+.DashboardView .page__content {
+  margin-top: 40px;
+}
+
+.DashboardView_nannies {
+  width: 100%;
+}
+
+.DashboardView_nannies-wrapper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.DashboardView_nannies-card {
+  height: 350px;
+  padding: 10px 10px 15px 10px;
+}
+
+.page__content h3 {
+  text-align: center;
+}

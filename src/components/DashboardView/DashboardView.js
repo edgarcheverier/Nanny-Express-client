@@ -18,25 +18,24 @@ class DashboardView extends Component {
     })
   }
 
-  renderRows = () => {
+  renderNannies = () => {
     if (!this.props.user.friends) return null;
     let nannyArray = [];
     this.props.user.friends.forEach(friend => {
       if (this.props.filter && this.props.filter !== friend.fbId) {
         //Do nothing
       } else {
-        console.log(this.props.user);
+        // console.log(this.props.user);
         friend.nannies.forEach(nanny => {
           nannyArray.push(
-          <ListItem key={nanny.name} onClick={() => this.handleOnClickNanny(nanny)}>
-            <div className='left'>
-              <img src={nanny.photo} className='list-item__thumbnail' />
+            <div className="DashboardView_nannies-card">
+              <div className="DashboardView_nannies-wrapper">
+                <img key={nanny.name} src={nanny.photo} className='DashboardView_nannies'
+                  onClick={() => this.handleOnClickNanny(nanny)} />
+              </div>
+              <h3>{nanny.name}</h3>
             </div>
-            <div className='center'>
-              {nanny.name}
-            </div>
-          </ListItem>
-          );
+              );
         })
       }
     })
@@ -47,9 +46,7 @@ class DashboardView extends Component {
    if (this.state.redirectToNannyView) return <Redirect to={{pathname:'/nannyview', state:{nanny:this.state.redirectToNannyViewState}}} />
     return (
       <Page className='DashboardView'>
-        <List style={{marginTop: '44px'}}renderHeader={() => <ListHeader>All Nannies</ListHeader>}>
-          {this.renderRows()}
-        </List>
+        {this.renderNannies()}
       </Page>
     )
   }
