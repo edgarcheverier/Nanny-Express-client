@@ -1,8 +1,7 @@
 @import '../../styles/colors.css';
 
 .DashboardView .page__content {
-  margin-top: 50px;
-  background-color: var(--p1-color1);
+  margin-top: 40px;
 }
 
 .DashboardView_nannies {
@@ -18,11 +17,9 @@
 
 .DashboardView_nannies-card {
   height: 350px;
-  background-color: var(--p1-color1);
   padding: 10px 10px 15px 10px;
 }
 
-.DashboardView_nannies-card .page__content h3 {
-  color: var(--p1-color3);
-  font-family: Comic Sans MS, Comic Sans, cursive;
+.page__content h3 {
+  text-align: center;
 }

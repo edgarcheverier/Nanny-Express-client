@@ -53,7 +53,7 @@ class SideMenu extends Component {
   render() {
     if (this.state.redirectToEditNannies) return <Redirect to='/nannyedit'/>
     return (
-      <div>
+      <div className="SideMenu">
         <Splitter>
           <SplitterSide
             style={{
@@ -68,7 +68,9 @@ class SideMenu extends Component {
             onOpen={this.show}
           >
             <Page>
-              {this.props.user.photo && <img src={this.props.user.photo}></img>}
+              {this.props.user.photo &&
+                <img style={{  borderRadius: '15px', margin: '15px 0 0 45px'}}
+                  src={this.props.user.photo}></img>}
               {this.props.user.name && <h3>{this.props.user.name}</h3>}
               <Button style={{margin: '6px'}} onClick={this.handleClickYourNannies}
               ><i className="zmdi zmdi-edit"></i> Your nannies</Button>
@@ -77,7 +79,8 @@ class SideMenu extends Component {
                 dataSource={this.props.user.friends}
                 renderRow={(friend) => (
                   <ListItem key={friend.FBID} onClick={() => this.filterNanny(friend)} tappable>
-                    <img src={friend.photo}></img>{friend.name}
+                    <img src={friend.photo} className='list-item__thumbnail'></img>
+                    <p style={{margin: '10px 10px'}}>{friend.name}</p>
                   </ListItem>
                 )}/>
             </Page>
