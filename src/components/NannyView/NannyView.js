@@ -43,8 +43,8 @@ class NannyView extends Component {
         <div className='NannyView'>
           <img className="nannyPhoto" src={this.props.location.state.nanny.photo}></img>
           <h2>{this.props.location.state.nanny.name}, {this.props.location.state.nanny.age}</h2>
-          {this.renderNannyProperties()}
           <p class="nannyDescription">{this.props.location.state.nanny.description}</p>
+          {this.renderNannyProperties()}
         </div>
       </Page>
 
