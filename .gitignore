@@ -21,6 +21,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # config
+/src/config/facebook.config.js
+/src/config/api.config.js
 
 # vscode
 /.vs
