@@ -50,7 +50,7 @@ Fork the repo and do your thing. Push to your fork and submit a pull request.
 
 Edgar Cheverier - [Github](https://github.com/edgarcheverier) - [LinkedIn](https://es.linkedin.com/in/edgar-hugo-cheverier-aguilar-886b3a86)
 
-Christopher Harju - [Github](https://github.com/CKGHarju) 
+Christopher Harju - [Github](https://github.com/CKGHarju) - [LinkedIn](https://www.linkedin.com/in/christopher-harju-909b2362/)   
 
 Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://linkedin.com/in/jonportella)
 
