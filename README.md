@@ -54,6 +54,8 @@ Christopher Harju - [Github](https://github.com/CKGHarju) - [LinkedIn](https://w
 
 Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://linkedin.com/in/jonportella)
 
+Cristina Guimaraes [Github](https://github.com/cristinaguimaraes), Original Project Idea
+
 
 ## License
 
