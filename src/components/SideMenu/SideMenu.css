@@ -1,2 +1,4 @@
-@import 'onsenui/css/onsenui.css';
-@import 'onsenui/css/onsen-css-components.css';
+.SideMenu .page__content img {
+  border-radius: 15px;
+  margin: 15px 0 0 45px;
+}

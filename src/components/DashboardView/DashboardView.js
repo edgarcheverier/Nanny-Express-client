@@ -3,45 +3,50 @@ import './DashboardView.css';
 import { connect } from 'react-redux';
 import { Page, List, ListItem, ListHeader } from 'react-onsenui';
 import SideMenu from '../SideMenu';
-
+import { Redirect } from 'react-router';
 
 class DashboardView extends Component {
-  renderToolbar = () => {
-    return (
-      <SideMenu/>
-    );
+  state = {
+    redirectToNannyView: false,
+    redirectToNannyViewState: null
   }
 
-  renderRows = () => {
+  handleOnClickNanny = (nanny) => {
+    this.setState({
+      redirectToNannyViewState: nanny,
+      redirectToNannyView: true
+    })
+  }
+
+  renderNannies = () => {
     if (!this.props.user.friends) return null;
     let nannyArray = [];
     this.props.user.friends.forEach(friend => {
       if (this.props.filter && this.props.filter !== friend.fbId) {
         //Do nothing
       } else {
+        // console.log(this.props.user);
         friend.nannies.forEach(nanny => {
           nannyArray.push(
-          <ListItem key={nanny.name}>
-            <div className='left'>
-              <img src={nanny.photo} className='list-item__thumbnail' />
+            <div className="DashboardView_nannies-card">
+              <div className="DashboardView_nannies-wrapper">
+                <img key={nanny.name} src={nanny.photo} className='DashboardView_nannies'
+                  onClick={() => this.handleOnClickNanny(nanny)} />
+              </div>
+              <h3>{nanny.name}</h3>
             </div>
-            <div className='center'>
-              {nanny.name}
-            </div>
-          </ListItem>
-          );
+              );
         })
-      }    
+      }
     })
     return nannyArray;
   }
 
   render() {
+   if (this.state.redirectToNannyView) return <Redirect to={{pathname:'/nannyview', state:{nanny:this.state.redirectToNannyViewState}}} />
     return (
-      <Page className='DashboardView' renderToolbar={this.renderToolbar}>
-        <List style={{marginTop: '44px'}}renderHeader={() => <ListHeader>All Nannies</ListHeader>}> 
-          {this.renderRows()}
-        </List>
+      <Page className='DashboardView'>
+        {this.renderNannies()}
       </Page>
     )
   }

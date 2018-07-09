@@ -3,15 +3,18 @@ import 'onsenui/css/onsen-css-components.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { Page, Toolbar, Icon, ToolbarButton, ListItem, List, ListHeader, Fab, ProgressCircular } from 'react-onsenui';
+import { Page, Toolbar, Icon, ToolbarButton, ListItem, List, Fab, ProgressCircular } from 'react-onsenui';
 import ons from 'onsenui';
 import {API} from '../../store/middlewares/apiService';
 
 class NannyEditView extends Component {
   state = {
     redirectToNannyform: false,
-    redirectToDashboard: false
+    redirectToDashboard: false,
+    redirectToNanny: false,
+    nannySelected: null
   }
+  
   renderToolbar = () =>  {
     return (
       <Toolbar>
@@ -30,15 +33,22 @@ class NannyEditView extends Component {
     this.props.updateUser(this.props.user);
   }
 
+  handleOnClick = (nanny) => {
+    this.setState({nannySelected: nanny, redirectToNanny: true})
+   }
+
   renderRows = () => {
     if (!this.props.user.nannies) return null;
       return this.props.user.nannies.map((nanny, index) => {
-        return <ListItem key={nanny.photo} onClick={() => this.editYourNanny(index)}>
+        return <ListItem key={nanny.photo} onClick={() => {this.handleOnClick(nanny)}}>
           <div className='left'>
             <img src={nanny.photo} className='list-item__thumbnail' />
           </div>
           <div className='center'>
             {nanny.name}
+          </div>
+          <div className='right'>
+            <Icon icon='md-delete' onClick={() => this.editYourNanny(index)}/>
           </div>
         </ListItem>
       })
@@ -65,6 +75,7 @@ class NannyEditView extends Component {
   render() {
     if(this.state.redirectToNannyform) return <Redirect to='/nannyform' /> 
     if(this.state.redirectToDashboard) return <Redirect to='/dashboard' />
+    if(this.state.redirectToNanny) return <Redirect to={{pathname:'/nannyview', state:{nanny: this.state.nannySelected}}} />
     if(this.props.user) {
       return (
         <Page renderToolbar={this.renderToolbar} renderFixed={this.renderFixed}>
